@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expotecnologia</title>
+    <!--Icono de la Pagina Web-->
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+    <!--Color de la Aplicación-->
+    <meta name="theme-color" content="#4B99A4" />
+    <!--hojas de estilo-->
+    <link rel="stylesheet" type="text/css" href="css/style-off.css" />
+    <link rel="stylesheet" href="css/responsive.css">
+    <!--Optimizacion para movil-->
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <!--Meta etiqetas PWA para Apple-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-icon" href="img/favicon.png" />
+    <link rel="apple-touch-startup-image" href="img/favicon.png" />
+    <!--Configuracion General PWA-->
+    <link rel="manifest" href="manifest.json" />
+    <!--Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--AOS-->
+    <!-- Codigo para consulta de ponente-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Script -->
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <ul>
+                <div class="logo">
+                    <img src="img/tecexpo1.png" />
+                </div>
+                <li class="items"><a href="#header">Inicio</a></li>
+                <li class="items"><a href="#modalidadad-participacion">Modalidad</a></li>
+                <li class="items"><a href="#agenda">Agenda</a></li>
+                <li class="items"><a href="#footer">Contacto</a></li>
+            </ul>
+        </nav>
+        <img class="bar" src="img/bars-solid.svg" alt="">
+        <!-- fin container-->
+    </header>
+
+    <div class="expo">
+    </div>
+
+    <div id="slider">
+        <div class="hero">
+        </div>
+    </div>
+
+    <!-- ///////////////////////////////////////////////////////////////////////// -->
+
+    <div id="agenda">
+        <div class="container">
+            <h2 class="subheader">Agenda</h2>
+            <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-database.js"></script>
+            <script type="text/javascript">
+                var firebaseConfig = {
+                    apiKey: "AIzaSyB_QcVegdNKpU1W-MSncXuvGDR4YZOgFpk",
+                    authDomain: "baseexpo2020.firebaseapp.com",
+                    databaseURL: "https://baseexpo2020.firebaseio.com",
+                    projectId: "baseexpo2020",
+                    storageBucket: "baseexpo2020.appspot.com",
+                    messagingSenderId: "929436841385",
+                    appId: "1:929436841385:web:0cf1021e0da5fd1eb3c0b8",
+                    measurementId: "G-CZHY0L1V2H"
+                };
+                firebase.initializeApp(firebaseConfig);
+                firebase.analytics();
+
+                function getInfo(id) {
+                    var cedula = document.getElementById("idPonente").value;
+                    var task = firebase.database().ref("/Evento/" + cedula + "/");
+                    task.once("value", function(data) {
+                        //**********NOMBRE PONENTE
+                        NombrePonente = data.val().Nombre;
+                        var insertName = document.createElement('a');
+                        var name = "<b>Usted está identificado como:</b> " + NombrePonente;
+                        insertName.innerHTML = name;
+                        //document.getElementById("pname".innerHTML = "");
+                        //document.getElementById("pname").appendChild(insertName);
+                        //**********TITULO DE LA PONENCIA
+                        Ponencia = data.val().Ponencia;
+                        var insertPonen = document.createElement('a');
+                        var ponencia = "<b>Título de la ponencia:</b> " + Ponencia;
+                        insertPonen.innerHTML = ponencia;
+                        //document.getElementById("pponencia".innerHTML = "");
+                        //document.getElementById("pponencia").appendChild(insertPonen);
+                        //***********DÍA
+                        Dia = data.val().Dia;
+                        var insertDia = document.createElement('a');
+                        var dia = "<b>Dia:</b> " + Dia;
+                        insertPonen.innerHTML = dia;
+                        document.getElementById("pdia".innerHTML = "");
+                        document.getElementById("pdia").appendChild(insertDia);
+                        //************HORA
+                        Hora = data.val().Hora;
+                        var insertHora = document.createElement('a');
+                        var hora = "<b>Hora:</b> " + Hora;
+                        insertPonen.innerHTML = hora;
+                        document.getElementById("phora".innerHTML = "");
+                        document.getElementById("phora").appendChild(insertHora);
+                        //*************SALON
+                        Salon = data.val().Salon;
+                        var insertSalon = document.createElement('a');
+                        var salon = "<b>El lugar de su conferencia es:</b> " + Salon;
+                        insertPonen.innerHTML = salon;
+                        document.getElementById("psalon".innerHTML = "");
+                        document.getElementById("psalon").appendChild(insertSalon);
+                        // alert(name + "\n" + ponencia + "\n" + dia + "\n" + hora + "\n" + salon);
+                        ////////// Sweet alert////////////////////////
+                        Swal.fire({
+                            title: 'CONSULTA EXITOSA!',
+                            //text: `${name}, -${ponencia}, -${dia}, -${hora}, -${salon}`,
+                            // text: (name + "\n" + ponencia + "\n" + dia + "\n" + hora + "\n" + salon),
+                            html: name + '<br>' + ponencia + '<br>' + dia + '<br>' + hora + '<br>' + salon,
+                            icon: 'success',
+                            confirmButtonText: 'SALIR',
+                            // footer: '<span>Consultar Ayuda a Recordar</span>',
+                            width: '60%',
+                            padding: '1rem',
+                            background: '#FFFFFF',
+                            // grow: 'column', 'fullscreen'
+                            backdrop: true /* aclara o oscurece el fondo del alrededor */ ,
+                            //timer: 3000,
+                            timerProgressBar: true,
+                            animation: true,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                            stopKeydownPropagation: false,
+                            //imageUrl: './img/favicon-64.png'
+                        });
+                    });
+                }
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9 "></script>
+            <br>
+            <div class="busqueda-cedula">
+                <div class="ingresar-cedula">
+                    <form class="Formulario">
+                        <label for="lname"> Ingrese su número de Cédula</label>
+                        <br>
+                        <input type="text" id="idPonente" placeholder="Digitar sólo números">
+                        <br><br>
+                    </form>
+                </div>
+                <div class="boton-busqueda">
+                    <button onClick="getInfo()" class="button boton_enlace" id="btnBlue">CONSULTE AQUÍ</button>
+                </div>
+            </div>
+            <br>
+            <div id="pname"></div>
+            <div id="pponencia"></div>
+            <div id="pdia"></div>
+            <div id="phora"></div>
+            <div id="psalon"></div>
+
+        </div>
+    </div>
+    <!--fin videos-->
+
+    <div class="clearfix"> </div>
+
+    <!-- ///////////////////////////////////////////////////////////////////////// -->
+    <div id="modalidadad-participacion">
+        <h2 class="subheader">modalidad</h2>
+        <div class="container modalidad-flex">
+            <div class="modalidad" data-aos="fade-up-right">
+                <img src="img/1.png" />
+                <h3>empresario</h3>
+                <p>
+                    Si quieres participar en la modalidad de empresario, ingresa aqui:
+                </p>
+                <br>
+                <a class="boton_enlace" href="https://expotecnologia.unitecnar.edu.co/co_part/" target="blank">Inscríbete</a>
+            </div>
+            <div class="modalidad" data-aos="fade-up-right">
+                <img src="img/2.png" />
+                <h3>estudiante</h3>
+                <p>
+                    Si quieres participar en la modalidad de estudiante, ingresa aqui:
+                </p>
+                <br>
+                <a class="boton_enlace" href="https://expotecnologia.unitecnar.edu.co/co_part/" target="blank">Inscríbete</a>
+            </div>
+            <div class="modalidad" data-aos="fade-up-right">
+                <img src="img/3.png" />
+                <h3>profesional</h3>
+                <p>
+                    Si quieres participar en la modalidad de profesional, ingresa aqui:
+                </p>
+                <br>
+                <a class="boton_enlace" href="https://expotecnologia.unitecnar.edu.co/co_part/" target="blank">Inscríbete</a>
+            </div>
+        </div>
+        <!--fin container-->
+    </div>
+
+
+    <!--fin modalidades-->
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <div class="clearfix"> </div>
+    <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+    <footer id="footer">
+        <div class="contenido-footer container">
+            <h2 class="subheader">Contacto</h2>
+            <p>Envíanos un mensaje por medio de estas Redes Sociales :) </p>
+            <ul id="redes">
+
+                <li>
+                    <a href="">
+                        <img class="t" src="img/twitter.png" />
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img class="f" src="img/facebook.png" />
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img class="i" src="img/instagram.png" />
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </footer>
+
+
+    <!-- <script src="jquery-3.5.1.min.js"></script> -->
+
+
+    <!-- Script js -->
+    <!-- <script src="js/app.js"></script> -->
+</body>
+
+</html>

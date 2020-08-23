@@ -1,0 +1,132 @@
+@media all and (max-width:900px) {
+    .modalidad-flex{    
+        width:90%;
+        
+    }
+    .modalidad{
+        width: 30%;
+    }
+    .bar img{
+          
+        display: flex;
+		justify-content: center;
+		align-items: center;
+        
+    }
+    .bar:hover{
+        transition: all 300ms;
+        background: white;
+        border-style: groove;
+    }
+    
+    .busqueda-cedula input[type="text"],.button{
+        width: 50%;
+    }
+     .bar{
+        display: block;
+    }
+    .expo{
+        background-position: center;
+  
+    }
+
+      nav ul {
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-around;
+        transition: all 300ms;
+    }
+    
+    nav ul li.items {
+        width: 80%;
+        display: none;
+        transition: all 300ms;
+    }
+    nav ul li.items.show {
+        display: block;
+        
+    }
+
+}
+
+@media all and (max-width:1000px) {
+   .expo{
+    height: 300px;
+    }
+}
+
+@media all and (max-width:500px) {
+        .modalidad-flex{    
+        width:100%;
+        flex-direction: column;
+        
+    }
+    .modalidad{
+        padding-top: 30px;
+        width:60%;
+       
+    }
+       .busqueda-cedula input[type="text"],.button{
+        width: 50%;
+    }
+       .expo{
+    height: 160px;
+    }
+    .contenido-footer{
+        text-align: center;
+    
+    }
+}
+@media all and (max-width:450px) {
+       .expo{
+    height: 100px;
+    }
+}
+    
+@media all and (max-width:1024px) {
+       .expo{
+    height: 300px;
+    }
+    
+@media all and (max-width:375px) {
+       .expo{
+    height: 100px;
+    }
+}
+
+@media all and (max-width:414px) {
+       .expo{
+    height: 100px;
+    }
+}
+@media all and (max-width:768px) {
+       .expo{
+    height:200px;
+    }
+    
+
+@media all and (max-width:280px) {
+       .expo{
+    height: 90px;
+    }
+    
+nav {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+    .logo img{
+        width: 100%;
+        
+    }
+      nav ul {
+        width: 90%;
+        flex-direction: column;
+        justify-content: space-around;
+        
+    }
+       .busqueda-cedula input[type="text"],.button{
+        width: 50%;
+    }
+}

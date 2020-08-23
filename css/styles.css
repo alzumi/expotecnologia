@@ -1,0 +1,347 @@
+/*estilos generales*/
+
+
+/*resetear todos los margenes*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Open Sans', Verdana;
+}
+
+
+/*
+
+html, body {
+
+	overflow-x: hidden; 
+
+}
+
+*/
+
+body {
+    background: white;
+}
+
+.clearfix {
+    clear: both;
+    float: none;
+}
+
+.container {
+    width: 85%;
+    margin: 0px auto;
+    /*centrar un bloque*/
+}
+
+
+/*cabecera*/
+
+#main-header {
+    background: white;
+    height: 100px;
+    line-height: 85px;
+}
+
+#logo {
+    width: 60%;
+    float: left;
+}
+
+#logo h1 {
+    font-weight: bold;
+    font-size: 25px;
+    color: #4b99a4;
+}
+
+#menu {
+    width: 418px;
+    float: right;
+}
+
+#menu ul li {
+    list-style: none;
+    float: left;
+    margin-left: 18px;
+    margin-right: 18px;
+}
+
+#menu ul li a {
+    color: black;
+}
+
+#menu ul li a:hover {
+    color: #fd643b;
+}
+
+
+/*SLIDER*/
+
+#slider {
+    height: 400px;
+}
+
+#slider h2 {
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    line-height: 290px;
+    text-shadow: 0px 0px 6px black;
+}
+
+
+/*Modalidad-participacion*/
+
+.subheader {
+    font-size: 30px;
+    color: #333;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #4b99a4;
+    text-transform: uppercase;
+}
+
+div.hero {
+    background-image: url(../img/pwa.jpg);
+    height: 70vh;
+    background-position: top center;
+    background-size: cover;
+}
+
+.modalidad,
+.video {
+    width: 33%;
+    text-align: center;
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modalidad img {
+    height: 48px;
+    margin-bottom: 20px;
+}
+
+.modalidad h3 {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.modalidad p,
+.video p {
+    color: #444;
+    text-align: center;
+    display: block;
+    width: 85%;
+    margin: 0px auto;
+}
+
+.boton_enlace {
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #4b99a4;
+    border-radius: 6px;
+}
+
+.boton_enlace:hover {
+    background-color: #fd643b;
+}
+
+
+/*Videos*/
+
+.video iframe {
+    width: 80%;
+    height: 170px;
+}
+
+
+/* Formulario de Busquedadp Por cedula*/
+
+.ingresar-cedula { 
+    display: block;
+    align-content: center;   
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.boton-busqueda {
+    display: block;
+    padding: 0 40%;
+}
+
+
+/*Footer*/
+
+#footer {
+    background: #333;
+    padding-top: 5px;
+    padding-bottom: 40px;
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+}
+
+#footer .subheader {
+    color: white;
+}
+
+#redes {
+    display: block;
+    width: 216px;
+    margin: 0px auto;
+    list-style: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#redes li {
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: all 300ms;
+}
+
+#redes li:hover {
+    opacity: 0.5;
+    transform: scale(1.2, 1.2);
+}
+
+
+/* diseño responsive*/
+
+
+/*
+
+/*MEDIA QUERY
+
+@media all and (min-width: 1000px){
+
+
+
+    #main-header{
+
+        background: black;
+
+    }
+
+
+
+}
+
+*/
+
+@media(max-width: 1336px) {
+    #menu {
+        width: 410px;
+    }
+}
+
+@media(max-width: 1225px) {
+    .container {
+        width: 95%;
+    }
+}
+
+@media(max-width: 1085px) {
+    #main-header {
+        height: 70px;
+        line-height: 65px;
+    }
+    #logo {
+        width: 60px;
+    }
+}
+
+@media (max-width: 999px) {
+    #logo {
+        width: 283px;
+        float: none;
+        margin: 0px auto;
+    }
+    #menu {
+        float: none;
+        margin: 0px auto;
+    }
+    #slider {
+        overflow: hidden;
+        /*Para lo que se salga del slider se oculte*/
+        height: 150px;
+    }
+    #slider h2 {
+        font-size: 30px;
+        line-height: 0px;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 780px) {
+    .service,
+    .video {
+        width: 70%;
+        float: none;
+        margin: 0px auto;
+        /*esto csirve para centrar el contenido*/
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+    .service p {
+        width: 50%;
+        text-align: justify;
+    }
+    .service p,
+    .video p {
+        margin-top: 10px;
+    }
+    .video iframe {
+        width: 80%;
+        height: 230px;
+    }
+}
+
+@media (max-width: 576px) {
+    #slider h2 {
+        font-size: 25px;
+        line-height: 30px;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 377px) {
+    #menu {
+        width: 100%;
+        text-align: center;
+    }
+    #menu ul li {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+    #slider h2 {
+        margin-top: 50px;
+    }
+    .service,
+    .video {
+        width: 90%;
+    }
+    .video iframe {
+        width: 80%;
+        height: 140px;
+    }
+}
+
+@media (max-width: 345px) {
+    #main-header {
+        height: auto;
+    }
+    #menu ul li {
+        float: none;
+    }
+}
